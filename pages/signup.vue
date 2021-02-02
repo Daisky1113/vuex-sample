@@ -52,7 +52,10 @@ export default {
   }),
   computed: {},
   methods: {
-    async signup() {},
+    ...mapActions("auth", ["firebaseSignUp"]),
+    async signup() {
+      this.firebaseSignup({ email: this.email, password: this.password });
+    },
   },
 };
 </script>
