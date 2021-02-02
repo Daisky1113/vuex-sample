@@ -60,29 +60,10 @@
       <v-card>
         <v-card-title> プロダクト情報登録 </v-card-title>
         <v-card-text>
-          <v-text-field
-            v-model="productName"
-            outlined
-            dense
-            label="Product Name"
-          />
-          <v-text-field
-            v-model="tecTopics"
-            outlined
-            dense
-            label="使用技術(半角スペース区切り)"
-          />
-          <v-textarea
-            v-model="tecDetail"
-            outlined
-            dense
-            label="技術的こだわり"
-          />
-          <v-textarea
-            v-model="serviceDetail"
-            outlined
-            label="サービス的こだわり"
-          />
+          <v-text-field outlined dense label="Product Name" />
+          <v-text-field outlined dense label="使用技術(半角スペース区切り)" />
+          <v-textarea outlined dense label="技術的こだわり" />
+          <v-textarea outlined label="サービス的こだわり" />
         </v-card-text>
         <v-card-actions class="pb-4">
           <v-spacer />
@@ -97,24 +78,26 @@ import { mapState, mapGetters, mapMutations, mapActions } from "vuex";
 
 export default {
   components: {},
-  data: () => ({
-    productName: "",
-    tecTopics: "",
-    tecDetail: "",
-    serviceDetail: "",
-  }),
+  data: () => ({}),
   computed: {
+    ...mapState("user", ["product"]),
     topicArr() {
-      return this.tecTopics.split(" ");
+      return this.product.topics.split(" ");
     },
     tecDetailArr() {
-      return this.tecDetail.split(/\r\n|\r/);
+      return this.product.tecDetail.split(/\r\n|\r/);
     },
     serviceDetailArr() {
-      return this.serviceDetail.split(/\r\n|\r/);
+      return this.product.serviceDetail.split(/\r\n|\n/);
     },
   },
   methods: {
+    ...mapMutations("user", [
+      "setProductName",
+      "setProductTopics",
+      "setProductTecDetail",
+      "setProductServiceDetail",
+    ]),
     registerProduct() {
       console.log(this.productName);
       console.log(this.tecTopic);
