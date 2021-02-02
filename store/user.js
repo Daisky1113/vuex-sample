@@ -50,5 +50,14 @@ export const actions = {
     commit('setUserName', data.userName)
     commit('setUserPhoto', data.photoUrl)
   },
+
+  updateProduct({ state }, uid) {
+    firebase.firestore().doc(`users/${uid}`).update({
+      productName: state.product.name,
+      productTopics: state.product.topics,
+      productTecDetail: state.product.tecDetail,
+      productServiceDetail: state.product.serviceDetail
+    })
+  },
 }
 export const getters = {}
