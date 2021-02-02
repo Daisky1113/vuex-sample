@@ -29,6 +29,8 @@
   </v-row>
 </template>
 <script>
+import { mapActions } from "vuex";
+
 export default {
   data: () => ({
     email: "",
@@ -37,9 +39,12 @@ export default {
   }),
 
   methods: {
+    ...mapActions("auth", ["firebaseLogin"]),
     async login() {
-      console.log(this.email);
-      console.log(this.password);
+      this.firebaseLogin({
+        email: this.email,
+        password: this.password,
+      });
     },
   },
 };
