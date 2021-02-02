@@ -19,7 +19,9 @@ export const actions = {
   },
 
   async firebaseSignUp({ commi }, payload) {
-    console.log(payload)
+    const data = await firebase.auth()
+      .createUserWithEmailAndPassword(payload.email, payload.password)
+    commit('setUid', data.user.uid)
   },
 
   async fierbaseLogout({ commit }) {
