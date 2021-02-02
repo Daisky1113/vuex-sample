@@ -50,7 +50,9 @@ export default {
     password: "",
     avatarFile: null,
   }),
-  computed: {},
+  computed: {
+    ...mapState("auth", ["uid"]),
+  },
   methods: {
     ...mapActions("auth", ["firebaseSignUp"]),
     async signup() {
