@@ -62,24 +62,28 @@
         <v-card-text>
           <v-text-field
             @input="setProductName"
+            :value="product.name"
             outlined
             dense
             label="Product Name"
           />
           <v-text-field
             @input="setProductTopics"
+            :value="product.topics"
             outlined
             dense
             label="使用技術(半角スペース区切り)"
           />
           <v-textarea
             @input="setProductTecDetail"
+            :value="product.tecDetail"
             outlined
             dense
             label="技術的こだわり"
           />
           <v-textarea
             @input="setProductServiceDetail"
+            :value="product.serviceDetail"
             outlined
             label="サービス的こだわり"
           />
