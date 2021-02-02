@@ -15,7 +15,7 @@ export const actions = {
   async firebaseLogin({ commit }, payload) {
     const data = await firebase.auth().signInWithEmailAndPassword(payload.email, payload.password)
     const uid = data.user.uid
-    console.log(uid)
+    commit('setUid', uid)
   },
 
   async firebaseSignUp({ commi }, payload) {
