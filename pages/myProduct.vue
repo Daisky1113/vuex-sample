@@ -17,7 +17,7 @@
             <v-card-text>
               <p class="subtitle-2 font-weight-bold">プロダクト名</p>
               <p class="text-body-1 mb-10">
-                {{ productName }}
+                {{ product.name }}
               </p>
               <p class="subtitle-2 font-weight-bold">使用技術</p>
               <div class="mb-10">
@@ -60,10 +60,29 @@
       <v-card>
         <v-card-title> プロダクト情報登録 </v-card-title>
         <v-card-text>
-          <v-text-field outlined dense label="Product Name" />
-          <v-text-field outlined dense label="使用技術(半角スペース区切り)" />
-          <v-textarea outlined dense label="技術的こだわり" />
-          <v-textarea outlined label="サービス的こだわり" />
+          <v-text-field
+            @input="setProductName"
+            outlined
+            dense
+            label="Product Name"
+          />
+          <v-text-field
+            @input="setProductTopics"
+            outlined
+            dense
+            label="使用技術(半角スペース区切り)"
+          />
+          <v-textarea
+            @input="setProductTecDetail"
+            outlined
+            dense
+            label="技術的こだわり"
+          />
+          <v-textarea
+            @input="setProductServiceDetail"
+            outlined
+            label="サービス的こだわり"
+          />
         </v-card-text>
         <v-card-actions class="pb-4">
           <v-spacer />
