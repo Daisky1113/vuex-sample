@@ -8,12 +8,14 @@
   </v-app-bar>
 </template>
 <script>
+import { mapActions } from "vuex";
 export default {
   data: () => ({}),
   computed: {},
   methods: {
+    ...mapActions("auth", ["fierbaseLogout"]),
     logout() {
-      console.log("logout");
+      this.fierbaseLogout();
     },
   },
 };
