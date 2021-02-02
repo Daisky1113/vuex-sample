@@ -18,7 +18,7 @@ export const actions = {
     commit('setUid', uid)
   },
 
-  async firebaseSignUp({ commi }, payload) {
+  async firebaseSignUp({ commit }, payload) {
     const data = await firebase.auth()
       .createUserWithEmailAndPassword(payload.email, payload.password)
     commit('setUid', data.user.uid)
