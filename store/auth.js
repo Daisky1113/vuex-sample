@@ -11,5 +11,17 @@ export const mutations = {
     state.uid = null
   }
 }
-export const actions = {}
+export const actions = {
+  async firebaseLogin({ commit }, payload) {
+    console.log(payload)
+  },
+
+  async firebaseSignUp({ commi }, payload) {
+    console.log(payload)
+  },
+
+  async fierbaseLogout({ commit }) {
+    commit('clearUid')
+  }
+}
 export const getters = {}
