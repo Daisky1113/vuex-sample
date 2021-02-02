@@ -51,6 +51,18 @@ export const actions = {
     commit('setUserPhoto', data.photoUrl)
   },
 
+  async getUserData({ commit }, uid) {
+    const doc = await firebase.firestore().doc(`users/${uid}`).get()
+    const userData = doc.data()
+
+    commit('setUserName', userData.userName)
+    commit('setUserPhoto', userData.photoUrl)
+    commit('setProductName', userData.productName)
+    commit('setProductTopics', userData.productTopics)
+    commit('setProductTecDetail', userData.productTecDetail)
+    commit('setProductServiceDetail', userData.productServiceDetail)
+  },
+
   updateProduct({ state }, uid) {
     firebase.firestore().doc(`users/${uid}`).update({
       productName: state.product.name,
