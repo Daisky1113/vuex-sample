@@ -55,8 +55,21 @@ export default {
   },
   methods: {
     ...mapActions("auth", ["firebaseSignUp"]),
+    ...mapActions("storage", ["avatarUpload"]),
+    ...mapActions("user", ["createuser"]),
     async signup() {
-      this.firebaseSignup({ email: this.email, password: this.password });
+      await this.firebaseSignUp({ email: this.email, password: this.password });
+
+      const photoUrl = await this.avatarUpload({
+        uid: this.uid,
+        file: this.avatarFile,
+      });
+      console.log(photoUrl);
+      this.createuser({
+        uid: this.uid,
+        userName: this.userName,
+        photoUrl: photoUrl,
+      });
     },
   },
 };
