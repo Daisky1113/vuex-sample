@@ -23,6 +23,7 @@ export const actions = {
   },
 
   async fierbaseLogout({ commit }) {
+    firebase.auth().signOut()
     commit('clearUid')
   }
 }
